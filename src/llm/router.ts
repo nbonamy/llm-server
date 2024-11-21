@@ -103,11 +103,11 @@ router.post('/chat', engineModelMiddleware, async (req: LlmRequest, res: Respons
   // check attachInfo
   let attachment: Attachment|null = null;
   if (attachInfo) {
-     if (attachInfo.mimeType == null || attachInfo.contents == null) {
-      res.status(400).json({ error: 'attachment.mimeType and attachment.contents required' });
+     if (attachInfo.mimeType == null || attachInfo.content == null) {
+      res.status(400).json({ error: 'attachment.mimeType and attachment.content required' });
       return;
     }
-    attachment = new Attachment(attachInfo.contents, attachInfo.mimeType);
+    attachment = new Attachment(attachInfo.content, attachInfo.mimeType);
   }
 
   // load thread or messages

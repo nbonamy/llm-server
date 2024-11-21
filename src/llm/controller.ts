@@ -89,9 +89,9 @@ export default {
     const messages: Message[] = [
       new Message('system', instructions()),
       ...userMessages.map((m: any) => 
-          m.attachment == null || !m.attachment.contents?.length ?
+          m.attachment == null || !m.attachment.content?.length ?
             new Message(m.role, m.content) :
-            new Message(m.role, m.content, new Attachment(m.attachment.contents, m.attachment.mimeType)))
+            new Message(m.role, m.content, new Attachment(m.attachment.content, m.attachment.mimeType)))
     ];
 
     // ignite and add plugins
@@ -142,7 +142,7 @@ export default {
     // generate response from the engine
     //console.log(messages);
     const completion = await engine.complete(modelId, messages, { usage: true });
-    return completion.content;
+    return completion.content || '';
 
   }
 

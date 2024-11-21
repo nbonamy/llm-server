@@ -62,7 +62,7 @@ Used to chat in streaming mode with a model. A JSON payload is expected with the
   prompt: string,         // user prompt
   attachment?: {          // attachment
     mimeType: string,     
-    contents: string      // base64 encoded for binary data
+    content: string       // base64 encoded for binary data
   }
 }
 ```
